@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Chuck The Show</string>
+    <string name="Release">"Release: "</string>
+    <string name="VoteAverage">"Vote Average: "</string>
+    <string name="medium_text">Medium Text</string>
+    <string name="large_text">Large Text</string>
+</resources>

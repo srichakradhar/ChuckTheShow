@@ -12,12 +12,10 @@ import java.util.List;
 public class MoviesResponse {
 
     @SerializedName("page") private Integer page;
-    @SerializedName("poster_path") private String poster_path;
     @SerializedName("results") private List<MovieResult> results = new ArrayList<>();
 
-    public MoviesResponse(Integer page, String poster_path, List<MovieResult> results){
+    public MoviesResponse(Integer page, List<MovieResult> results){
         this.page = page;
-        this.poster_path = poster_path;
         this.results = results;
     }
 
@@ -27,14 +25,6 @@ public class MoviesResponse {
 
     public void setPage(int page) {
         this.page = page;
-    }
-
-    public String getPoster_path() {
-        return poster_path;
-    }
-
-    public void setPoster_path(String poster_path) {
-        this.poster_path = poster_path;
     }
 
     public List<MovieResult> getResults() {

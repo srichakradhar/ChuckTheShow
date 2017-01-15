@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
+import com.chuckree.chucktheshow.models.MovieResult;
+import com.chuckree.chucktheshow.models.MoviesResponse;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
@@ -32,18 +34,14 @@ class PosterAdapter extends BaseAdapter {
     private List<String> posterPaths;
     private Context context;
     private static LayoutInflater inflater = null;
-    private PosterViewHolder posterViewHolder;
 
-    PosterAdapter(MainActivity mainActivity, JSONArray jsonArray) {
+    PosterAdapter(MainActivity mainActivity, List<MovieResult> movieResults) {
 
         posterPaths = new ArrayList<>();
 
-        try {
-            for (int i = 0; i < jsonArray.length(); i++)
-                posterPaths.add(jsonArray.getJSONObject(i).getString("poster_path"));
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        for (MovieResult movieResult : movieResults)
+            posterPaths.add(movieResult.getPoster_path());
+
         context = mainActivity;
         inflater = (LayoutInflater) context.
                 getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -68,6 +66,7 @@ class PosterAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
 
+        PosterViewHolder posterViewHolder;
         if (view == null) {
             posterViewHolder = new PosterViewHolder();
             view = inflater.inflate(R.layout.layout_poster, viewGroup, false);
